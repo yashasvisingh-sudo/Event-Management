@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title%}
+Agreement
+{%endblock title%}
+
+{% block body%}
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-secondary text-white">
+            <i class="bi bi-file-earmark-text me-2"></i> Sponsorship Agreement
+        </div>
+        <div class="card-body">
+            <p class="card-text">Please carefully review the terms and conditions of our standard sponsorship agreement below.</p>
+            <div class="mt-3">
+                {{ agreement_text | safe }}
+            </div>
+            {% if current_user.is_authenticated %}
+            <div class="mt-4">
+                <button class="btn btn-success">I Agree</button>
+                <button class="btn btn-danger ms-2">I Disagree</button>
+            </div>
+            {% else %}
+            <p class="mt-4 text-muted">You must be logged in to accept the sponsorship agreement.</p>
+            <a href="{{ url_for('logIn') }}" class="btn btn-primary mt-2">Log In</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock body %}
