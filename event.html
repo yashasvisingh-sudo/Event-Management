@@ -1,0 +1,104 @@
+{% extends "base.html" %} {% block title %} Events {% endblock title %} {% block
+body %}
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Events</h1>
+    {% if current_user.is_authenticated %}
+    <a href="{{ url_for('sponsor') }}" class="btn btn-primary">
+      <i class="bi bi-plus-square me-2"></i> Add Event
+    </a>
+    {% endif %}
+  </div>
+
+  {% if ongoing_events %}
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-warning text-dark">
+      <i class="bi bi-play-circle me-2"></i> Ongoing Events
+    </div>
+    <div class="card-body">
+      {% if ongoing_events %}
+      <ul class="list-group list-group-flush">
+        {% for event in ongoing_events %}
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <h6 class="mb-1">{{ event.Name }}</h6>
+            <small class="text-muted"
+              ><i class="bi bi-calendar me-1"></i> {{ event.EventDate }} |
+              <i class="bi bi-geo-alt me-1"></i> {{ event.Venue }}</small
+            >
+          </div>
+          <a href="#" class="btn btn-sm btn-outline-info">View Details</a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No events are currently ongoing.</p>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %} {% if upcoming_events %}
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-info text-white">
+      <i class="bi bi-calendar-plus me-2"></i> Upcoming Events
+    </div>
+    <div class="card-body">
+      {% if upcoming_events %}
+      <ul class="list-group list-group-flush">
+        {% for event in upcoming_events %}
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <h6 class="mb-1">{{ event.Name }}</h6>
+            <small class="text-muted"
+              ><i class="bi bi-calendar me-1"></i> {{ event.EventDate }} |
+              <i class="bi bi-geo-alt me-1"></i> {{ event.Venue }}</small
+            >
+          </div>
+          <a href="#" class="btn btn-sm btn-outline-info">View Details</a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No upcoming events are scheduled.</p>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %} {% if past_events %}
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-secondary text-white">
+      <i class="bi bi-check-all me-2"></i> Past Events
+    </div>
+    <div class="card-body">
+      {% if past_events %}
+      <ul class="list-group list-group-flush">
+        {% for event in past_events %}
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <h6 class="mb-1">{{ event.Name }}</h6>
+            <small class="text-muted"
+              ><i class="bi bi-calendar me-1"></i> {{ event.EventDate }} |
+              <i class="bi bi-geo-alt me-1"></i> {{ event.Venue }}</small
+            >
+          </div>
+          <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No past events to display.</p>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %} {% if not ongoing_events and not upcoming_events and not
+  past_events %}
+  <div class="alert alert-info" role="alert">
+    No events available at the moment.
+  </div>
+  {% endif %}
+</div>
+{% endblock body %}

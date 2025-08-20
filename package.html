@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title%}
+Package
+{%endblock title%}
+
+{% block body%}
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-warning text-dark">
+            <i class="bi bi-box-seam me-2"></i> Sponsorship Packages
+        </div>
+        <div class="card-body">
+            <p class="card-text">Explore our various sponsorship packages designed to offer different levels of visibility and benefits for our valued sponsors.</p>
+            {% if packages %}
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+                {% for package in packages %}
+                <div class="col">
+                    <div class="card h-100 border-warning">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ package.name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${{ package.price }}</h6>
+                            <p class="card-text">{{ package.description }}</p>
+                            <ul class="list-unstyled">
+                                {% if package.benefits %}
+                                    {% for benefit in package.benefits %}
+                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> {{ benefit }}</li>
+                                    {% endfor %}
+                                {% else %}
+                                    <li>No specific benefits listed.</li>
+                                {% endif %}
+                            </ul>
+                            <a href="#" class="btn btn-warning mt-3">Select Package</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="mt-3">No sponsorship packages available at the moment.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock body %}

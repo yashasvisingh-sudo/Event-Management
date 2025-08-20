@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+Sponsor
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Welcome {{ username }}</h1>
+
+    <div class="mt-4">
+        <p class="lead">Thank you for being a valued sponsor! Here are some actions you can take:</p>
+        <a href="{{ url_for('event') }}" class="btn btn-info me-2 btn-lg">
+            <i class="bi bi-calendar4-event me-2"></i> Browse Events
+        </a>
+        <a href="{{ url_for('package') }}" class="btn btn-warning me-2 btn-lg">
+            <i class="bi bi-box-seam me-2"></i> View Packages
+        </a>
+        <a href="{{ url_for('agreement') }}" class="btn btn-success btn-lg">
+            <i class="bi bi-file-earmark-text me-2"></i> Review Agreement
+        </a>
+    </div>
+</div>
+{% endblock body %}

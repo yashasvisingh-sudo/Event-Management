@@ -1,0 +1,67 @@
+{% extends "base.html" %} {% block title%} Home {%endblock title%} {% block
+body%}
+<div class="container mt-5">
+  <div class="jumbotron shadow-lg">
+    <h1 class="display-4">SponsorConnect</h1>
+    <p class="lead">Connecting events with the right sponsors. Effortlessly.</p>
+    <a class="btn btn-primary btn-lg me-2" href="{{ url_for('event') }}"
+      >Explore Events</a
+    >
+    <a class="btn btn-outline-light btn-lg" href="{{ url_for('sponsor') }}"
+      >Find Sponsors</a
+    >
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">
+            <i class="bi bi-calendar-event me-2"></i> Manage Events
+          </h5>
+          <p class="card-text">
+            Organize and track all your events efficiently. From planning to
+            execution, we've got you covered.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">
+            <i class="bi bi-handshake me-2"></i> Connect with Sponsors
+          </h5>
+          <p class="card-text">
+            Find and engage with potential sponsors to support your events and
+            reach a wider audience.
+          </p>
+          <a
+            href="{{ url_for('sponsor') }}"
+            class="btn btn-sm btn-outline-primary mt-2"
+            >View Sponsors</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">
+            <i class="bi bi-box-seam me-2"></i> Sponsorship Packages
+          </h5>
+          <p class="card-text">
+            Discover various sponsorship packages tailored to different event
+            needs and sponsor preferences.
+          </p>
+          <a
+            href="{{ url_for('package') }}"
+            class="btn btn-sm btn-outline-secondary mt-2"
+            >View Packages</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}
